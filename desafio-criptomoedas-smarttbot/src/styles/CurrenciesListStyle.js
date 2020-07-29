@@ -8,10 +8,10 @@ export const CurrenciesListStyle = styled.div`
   color: #000;
   font-weight: 400;
   height: 60vh;
-  margin: 1%;
+  margin: 5px 1%;
   min-width: 150px;
   overflow-x: hidden;
-  overflow: auto;
+  overflow-y: auto;
   text-align: center;
   width: 15%;
   ::-webkit-scrollbar {

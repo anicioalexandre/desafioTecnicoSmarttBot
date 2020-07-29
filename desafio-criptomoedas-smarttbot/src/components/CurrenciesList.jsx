@@ -1,23 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CurrenciesListStyle } from '../styles/CurrenciesListStyle';
 import { connect } from 'react-redux';
 import { getCurrenciesNames } from '../redux/actions/currenciesNames';
+import { Input } from '../styles/InputStyle';
+import filterCurrenciesNames from '../services/filterCurrencies';
 
-const CurrenciesList = ({ getCurrenciesNames, currenciesNamesList }) => {
+const CurrenciesList = ({ getCurrenciesNames, currenciesNames }) => {
   useEffect(() => {
     getCurrenciesNames('https://poloniex.com/public?command=returnTicker');
   }, []);
+
+  const [inputValue, setInputValue] = useState('');
+
   return (
-    <CurrenciesListStyle>
-      {currenciesNamesList.map((currencyName) => (
-        <p key={currencyName}>{currencyName}</p>
-      ))}
-    </CurrenciesListStyle>
+    <>
+      <Input onChange={(e) => setInputValue(e.target.value) } />
+      <CurrenciesListStyle>
+        {filterCurrenciesNames(currenciesNames, inputValue).map((currencyName) => (
+          <p key={currencyName}>{currencyName}</p>
+        ))}
+      </CurrenciesListStyle>
+    </>
   );
 };
 
 const mapState = (state) => ({
-  currenciesNamesList: state.currenciesNames.namesList,
+  currenciesNames: state.currenciesNames.namesList,
 });
 
 const mapDispatch = {
