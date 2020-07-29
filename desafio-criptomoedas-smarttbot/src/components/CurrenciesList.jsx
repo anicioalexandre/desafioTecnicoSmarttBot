@@ -10,7 +10,7 @@ const CurrenciesList = ({ getCurrenciesNames, currenciesNamesList }) => {
   return (
     <CurrenciesListStyle>
       {currenciesNamesList.map((currencyName) => (
-        <p>{currencyName}</p>
+        <p key={currencyName}>{currencyName}</p>
       ))}
     </CurrenciesListStyle>
   );
