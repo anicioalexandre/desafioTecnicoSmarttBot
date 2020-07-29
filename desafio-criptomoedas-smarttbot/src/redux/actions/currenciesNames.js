@@ -1,8 +1,8 @@
-import fetchEndpoint from '../../services/fecthEndPoint';
+import fetchEndpoint from '../../services/fetchEndPoint';
 
 export const REQUEST_CURRENCIES_API = 'REQUEST_API';
-export const REQUEST_CURRENCIES_SUCCESS = 'REQUEST_Currencies_SUCCESS';
-export const REQUEST_CURRENCIES_FAILURE = 'REQUEST_Currencies_FAILURE';
+export const REQUEST_CURRENCIES_SUCCESS = 'REQUEST_CURRENCIES_SUCCESS';
+export const REQUEST_CURRENCIES_FAILURE = 'REQUEST_CURRENCIES_FAILURE';
 
 export const requestCurrenciesApi = () => ({
   type: REQUEST_CURRENCIES_API,
