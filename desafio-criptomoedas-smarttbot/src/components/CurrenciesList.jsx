@@ -18,6 +18,8 @@ const CurrenciesList = ({
   getOrders,
   currenciesNames,
   loading,
+  error,
+  orders,
 }) => {
   useEffect(() => {
     getCurrenciesNames('https://poloniex.com/public?command=returnTicker');
@@ -35,6 +37,9 @@ const CurrenciesList = ({
         />
         <Button
           disabled={!selectedCurrency}
+          animation={
+            selectedCurrency && orders.length === 0 ? 'infinite' : 'none'
+          }
           onClick={() =>
             getOrders(
               `https://poloniex.com/public?command=returnOrderBook&currencyPair=${selectedCurrency}&depth=10`
@@ -45,11 +50,19 @@ const CurrenciesList = ({
         </Button>
       </InputButtonContainer>
       <CurrenciesListStyle>
+        {error && <p>Falha na requisição, tente novamente!</p>}
         {loading && <p>Carregando...</p>}
         {/* função de filtro que recebe os nomes das moedas e retorna um array filtrado, caso o filtro exista */}
         {filterCurrenciesNames(currenciesNames, inputValue).map(
           (currencyName) => (
-            <CurrencyName onClick={() => setCurrency(currencyName)} key={currencyName}>
+            <CurrencyName
+              background={
+                currencyName === selectedCurrency ? '#00B49D' : '#c4c4c4'
+              }
+              color={currencyName === selectedCurrency ? '#fff' : '#000'}
+              onClick={() => setCurrency(currencyName)}
+              key={currencyName}
+            >
               {currencyName}
             </CurrencyName>
           )
@@ -62,6 +75,8 @@ const CurrenciesList = ({
 const mapState = (state) => ({
   currenciesNames: state.currenciesNames.namesList,
   loading: state.currenciesNames.loading,
+  error: state.currenciesNames.error,
+  orders: state.orderBook.orders,
 });
 
 const mapDispatch = {

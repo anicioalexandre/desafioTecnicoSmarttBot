@@ -6,12 +6,13 @@ import {
 
 const INITIAL_STATE = {
   loading: false,
+  orders: []
 };
 
 const orderBook = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case REQUEST_ORDER_API:
-      return { ...state, loading: true };
+      return { ...state, loading: true, orders: [] };
     case REQUEST_ORDER_FAILURE:
       return { ...state, loading: false, error: action.error };
     case REQUEST_ORDER_SUCCESS:
