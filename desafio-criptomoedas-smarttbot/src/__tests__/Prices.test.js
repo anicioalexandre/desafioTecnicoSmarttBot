@@ -20,9 +20,7 @@ fetchEndpoint
 
 describe('teste no componente CurrenciesList na page Prices', () => {
   it('testando chamada à api e se a quantidade de moedas renderizadas aparecem corretamente na tela', async () => {
-    const { getByText, container } = renderWithRedux(
-      renderWithRouter(<Prices />)
-    );
+    const { container } = renderWithRedux(renderWithRouter(<Prices />));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
     await waitFor(() =>
       expect(container.querySelectorAll('p')).toHaveLength(
@@ -45,17 +43,32 @@ describe('teste no componente CurrenciesList na page Prices', () => {
     expect(container.querySelectorAll('p')).toHaveLength(0);
   });
   it('botão de seleção de moeda funciona corretamente, acionando a API de ordens', async () => {
-    const { getByRole, container } = renderWithRedux(
-      renderWithRouter(<Prices />)
-    );
+    const {
+      getByRole,
+      getAllByRole,
+      getByText,
+      getAllByText,
+      getAllByTestId,
+      container,
+    } = renderWithRedux(renderWithRouter(<Prices />));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
     const input = getByRole('textbox');
     expect(input).toBeInTheDocument();
+    const searchButton = getByRole('button');
+    // checando se o botao está desativado antes da seleção de uma moeda
+    expect(searchButton).toBeDisabled();
     fireEvent.change(input, { target: { value: 'BTC_ETH' } });
     const selectedCurrency = container.querySelector('p');
     fireEvent.click(selectedCurrency);
-    const searchButton = getByRole('button');
+    // apos a seleção da moeda, o botao deve estar ativo e fazer um chamada à API
     fireEvent.click(searchButton);
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(2));
+    // checando a existencia e o tamanho das tabelas
+    expect(getAllByRole('table')).toHaveLength(4);
+    expect(getAllByText('QTD')).toHaveLength(2);
+    ['VENDA', 'COMPRA'].forEach((title) =>
+      expect(getByText(title)).toBeInTheDocument()
+    );
+    expect(getAllByTestId('values')).toHaveLength(40);
   });
 });
