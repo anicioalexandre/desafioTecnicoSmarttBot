@@ -14,7 +14,7 @@ const CriptoCurrencies = ({ loading, error, orders, getOrders }) => {
   }, [getOrders, currency]);
   return (
     <Container>
-      {error && <Message>Informe uma moeda válida {error}</Message>}
+      {error && <Message>Erro</Message>}
       {loading && <Message>Carregando...</Message>}
       {orders.length !== 0 && <CurrencyOrders />}
     </Container>

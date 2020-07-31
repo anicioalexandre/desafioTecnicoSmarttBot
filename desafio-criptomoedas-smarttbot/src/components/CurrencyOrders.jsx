@@ -9,7 +9,7 @@ const CurrencyOrders = ({ orders, actualCurrency }) => {
   const { currency } = useParams();
   return (
     <Container>
-      <h2>Ordens: {currency}</h2>
+      <h2>Book de Ofertas: {currency}</h2>
       <OrdersContainer>
         <OrdersTable
           reverse={true}
