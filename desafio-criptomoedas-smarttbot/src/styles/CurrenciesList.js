@@ -6,8 +6,9 @@ export const Container = styled.div`
   flex: 1 1 200px;
   flex-direction: column;
   justify-content: center;
+  margin: 2vh 2vw;
   min-width: 300px;
-  max-width: 25%;
+  max-width: 15%;
 `;
 
 export const InputButtonContainer = styled.div`
@@ -67,7 +68,7 @@ export const CurrenciesListStyle = styled.div`
     inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #000;
   font-weight: 350;
-  height: 60vh;
+  height: 70vh;
   margin: 5px 0;
   overflow-x: hidden;
   overflow-y: auto;
