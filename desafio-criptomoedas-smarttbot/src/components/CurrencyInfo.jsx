@@ -4,36 +4,42 @@ import { getCurrencyInfo } from '../redux/actions/currenciesInfos';
 import { Container, NumberInfo } from '../styles/CurrencyInfo';
 import { useParams } from 'react-router-dom';
 import { setInfoColor } from '../services/setColors';
+import Tooltip from '../svg/Tooltip';
+import ReactTooltip from 'react-tooltip';
 
 const CurrencyInfo = ({ currencyInfo, loadingInfo, getCurrencyInfo }) => {
   const { currency } = useParams();
   useEffect(() => {
-    getCurrencyInfo(
+    if (!loadingInfo) getCurrencyInfo(
       'https://poloniex.com/public?command=returnTicker',
       currency
     );
-  }, [getCurrencyInfo, currency]);
-  if (loadingInfo) return <Container>Carregando...</Container>;
+    console.log('getInfo');
+  }, [currency]);
+  if (loadingInfo) return <Container><h3>Carregando...</h3></Container>;
   return (
     <Container>
       <h3>Trade Info</h3>
       <div>
         Variação (%):{' '}
         <NumberInfo color={setInfoColor(currencyInfo?.percentChange)}>
-          {currencyInfo?.percentChange}
+          {(currencyInfo?.percentChange * 100).toFixed(2)}
         </NumberInfo>
       </div>
       <div>
-        baseVolume: <NumberInfo>{currencyInfo?.baseVolume}</NumberInfo>
+        Volume base: <NumberInfo>{currencyInfo?.baseVolume}</NumberInfo>
       </div>
       <div>
-        quoteVolume: <NumberInfo>{currencyInfo?.quoteVolume}</NumberInfo>
+        Volume ajustado{' '}
+        <Tooltip info="Calculado através do volume base vezes o preço médio nas últimas 24h." />
+        : <NumberInfo>{currencyInfo?.quoteVolume}</NumberInfo>
+        <ReactTooltip effect="solid" />
       </div>
       <div>
-        high24hr: <NumberInfo>{currencyInfo?.high24hr}</NumberInfo>
+        Máxima (24h): <NumberInfo>{currencyInfo?.high24hr}</NumberInfo>
       </div>
       <div>
-        low24hr: <NumberInfo>{currencyInfo?.low24hr}</NumberInfo>
+        Mínima (24h): <NumberInfo>{currencyInfo?.low24hr}</NumberInfo>
       </div>
     </Container>
   );

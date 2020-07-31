@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 50px;
   min-height: 250px;
-  min-width: 250px;
+  min-width: 350px;
   place-items: center;
   h3 {
     align-items: center;

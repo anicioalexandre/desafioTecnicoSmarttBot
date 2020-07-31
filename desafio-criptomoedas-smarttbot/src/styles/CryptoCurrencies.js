@@ -7,8 +7,6 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 2vh 2vw;
-  min-width: 60%;
-  max-width: 80%;
 `;
 
 export const Message = styled.h3`

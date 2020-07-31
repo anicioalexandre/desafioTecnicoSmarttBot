@@ -16,7 +16,7 @@ const OrdersTable = ({ orders, names, reverse }) => {
             {orders?.map((order, index2) => (
               <tr data-testid="values" key={order[index] + index2}>
                 <TD color={setActionColor(names[index])}>
-                  {index === 1 ? order[index].toFixed(1) : order[index]}
+                  {index === 1 ? order[index].toFixed(3) : order[index]}
                 </TD>
               </tr>
             ))}

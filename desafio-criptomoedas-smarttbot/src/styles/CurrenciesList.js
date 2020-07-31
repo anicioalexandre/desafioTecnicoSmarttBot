@@ -1,10 +1,13 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   align-items: center;
   display: flex;
+  flex: 1 1 200px;
   flex-direction: column;
   justify-content: center;
+  min-width: 300px;
+  max-width: 25%;
 `;
 
 export const InputButtonContainer = styled.div`
@@ -12,30 +15,11 @@ export const InputButtonContainer = styled.div`
   display: flex;
   height: 40px;
   justify-content: space-evenly;
-  min-width: 150px;
   width: 100%;
-`;
-
-const pulse = keyframes`
-  0% {
-    box-shadow: 0 0 0 0 rgba(7, 171, 150, 0.7);
-  }
-    
-  50% {
-    box-shadow: 0 0 0 12px rgba(0, 180, 157, 0);
-  }
-    
-  100% {
-    box-shadow: 0 0 0 0 rgba(3, 107, 94, 0.7);
-  }
 `;
 
 export const ButtonStyle = styled.button`
   align-items: center;
-  animation-name: ${pulse};
-  animation-duration: 3s;
-  animation-iteration-count: ${({ animation }) => animation};
-  animation-timing-function: linear;
   background: #00b49d;
   border-radius: 3px;
   border: none;
@@ -85,7 +69,6 @@ export const CurrenciesListStyle = styled.div`
   font-weight: 350;
   height: 60vh;
   margin: 5px 0;
-  min-width: 150px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: center;

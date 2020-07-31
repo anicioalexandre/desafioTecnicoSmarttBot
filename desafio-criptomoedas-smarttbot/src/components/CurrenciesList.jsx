@@ -39,9 +39,6 @@ const CurrenciesList = ({
         />
         <Button
           disabled={!selectedCurrency}
-          // animando o botão quando já se selecionou uma moeda e ainda não se tem nenhum dado de ordens
-          // (tentativa de incentivar o usuário a clicar no botão):
-          animation={selectedCurrency && orders.length === 0 ? 'infinite' : 'none'}
           onClick={() => history.push(`/orders/${selectedCurrency}`)}
         >
           <SearchIcon />
