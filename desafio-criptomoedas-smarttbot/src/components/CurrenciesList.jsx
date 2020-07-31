@@ -6,27 +6,29 @@ import {
   CurrencyName,
 } from '../styles/CurrenciesList';
 import { connect } from 'react-redux';
-import { getCurrenciesNames } from '../redux/actions/currenciesNames';
+import { getCurrenciesNames } from '../redux/actions/currenciesInfos';
 import filterCurrenciesNames from '../services/filterCurrencies';
 import Input from './smallComponents/Input';
 import Button from './smallComponents/Button';
 import SearchIcon from '../svg/SearchIcon';
 import { getOrders } from '../redux/actions/orderBook';
+import { useHistory } from 'react-router-dom';
 
 const CurrenciesList = ({
   getCurrenciesNames,
-  getOrders,
   currenciesNames,
-  loading,
-  error,
+  getOrders,
   orders,
+  loadingNames,
+  error,
 }) => {
   useEffect(() => {
     getCurrenciesNames('https://poloniex.com/public?command=returnTicker');
-  }, []);
+  }, [getCurrenciesNames]);
 
   const [inputValue, setInputValue] = useState('');
   const [selectedCurrency, setCurrency] = useState(null);
+  let history = useHistory();
 
   return (
     <Container>
@@ -37,21 +39,17 @@ const CurrenciesList = ({
         />
         <Button
           disabled={!selectedCurrency}
-          animation={
-            selectedCurrency && orders.length === 0 ? 'infinite' : 'none'
-          }
-          onClick={() =>
-            getOrders(
-              `https://poloniex.com/public?command=returnOrderBook&currencyPair=${selectedCurrency}&depth=10`
-            )
-          }
+          // animando o botão quando já se selecionou uma moeda e ainda não se tem nenhum dado de ordens
+          // (tentativa de incentivar o usuário a clicar no botão):
+          animation={selectedCurrency && orders.length === 0 ? 'infinite' : 'none'}
+          onClick={() => history.push(`/orders/${selectedCurrency}`)}
         >
           <SearchIcon />
         </Button>
       </InputButtonContainer>
       <CurrenciesListStyle>
         {error && <p>Falha na requisição, tente novamente!</p>}
-        {loading && <p>Carregando...</p>}
+        {loadingNames && <p>Carregando...</p>}
         {/* função de filtro que recebe os nomes das moedas e retorna um array filtrado, caso o filtro exista */}
         {filterCurrenciesNames(currenciesNames, inputValue).map(
           (currencyName) => (
@@ -73,9 +71,9 @@ const CurrenciesList = ({
 };
 
 const mapState = (state) => ({
-  currenciesNames: state.currenciesNames.namesList,
-  loading: state.currenciesNames.loading,
-  error: state.currenciesNames.error,
+  currenciesNames: state.currenciesInfos.namesList,
+  error: state.currenciesInfos.error,
+  loadingNames: state.currenciesInfos.loadingNames,
   orders: state.orderBook.orders,
 });
 

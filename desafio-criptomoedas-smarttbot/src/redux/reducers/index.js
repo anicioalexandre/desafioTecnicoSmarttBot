@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import currenciesNames from './currenciesNamesAPI';
+import currenciesInfos from './currenciesInfos';
 import orderBook from './orderBookAPI';
 
-export default combineReducers({ currenciesNames, orderBook });
+export default combineReducers({ currenciesInfos, orderBook });

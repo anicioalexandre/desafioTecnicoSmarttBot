@@ -6,9 +6,9 @@ export const Container = styled.div`
   align-items: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
     inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 20px;
-    min-height: 390px;
-    width: 240px;
+  margin: 15px;
+  min-height: 315px;
+  width: 220px;
   table {
     border-bottom: 1px solid #212121;
     border-collapse: collapse;
@@ -21,11 +21,6 @@ export const Container = styled.div`
     text-align: left;
     width: 100%;
   }
-  td {
-    border-bottom: 1px solid #212121;
-    border-top: 1px solid #212121;
-    padding 8px;
-  }
   th {
     background: #212121;
     padding-bottom: 12px;
@@ -34,4 +29,13 @@ export const Container = styled.div`
   tr {
     text-align: center;
   }
+`;
+
+export const TD = styled.td`
+  background: #c4c4c4;
+  border-bottom: 1px solid #212121;
+  border-top: 1px solid #212121;
+  color: ${({ color }) => color};
+  font-weight: 500;
+  padding 6px;
 `;
