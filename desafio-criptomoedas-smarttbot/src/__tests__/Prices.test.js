@@ -4,8 +4,9 @@ import renderWithRedux from '../helpers/renderWithRedux';
 import renderWithRouter from '../helpers/renderWithRouter';
 import mockCurrenciesNamesandValues from '../__mocks__/mockCurrenciesNamesandValues';
 import mockOrders from '../__mocks__/mockOrders';
-import Prices from '../pages/Prices';
+import App from '../App';
 import fetchEndpoint from '../services/fetchEndPoint';
+import CriptoCurrencies from '../pages/CriptoCurrencies';
 
 afterEach(() => {
   fetchEndpoint.mockClear();
@@ -16,11 +17,12 @@ fetchEndpoint
   .mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesandValues))
   .mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesandValues))
   .mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesandValues))
-  .mockImplementationOnce(() => Promise.resolve(mockOrders));
+  .mockImplementationOnce(() => Promise.resolve(mockOrders))
+  .mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesandValues));
 
-describe('teste no componente CurrenciesList na page Prices', () => {
+describe('teste no componente CurrenciesList no App', () => {
   it('testando chamada à api e se a quantidade de moedas renderizadas aparecem corretamente na tela', async () => {
-    const { container } = renderWithRedux(renderWithRouter(<Prices />));
+    const { container } = renderWithRedux(renderWithRouter(<App />));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
     await waitFor(() =>
       expect(container.querySelectorAll('p')).toHaveLength(
@@ -29,9 +31,7 @@ describe('teste no componente CurrenciesList na page Prices', () => {
     );
   });
   it('input de filtro da lista de criptomoedas, testando implementação', async () => {
-    const { getByRole, container } = renderWithRedux(
-      renderWithRouter(<Prices />)
-    );
+    const { getByRole, container } = renderWithRedux(renderWithRouter(<App />));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
     const input = getByRole('textbox');
     expect(input).toBeInTheDocument();
@@ -50,7 +50,7 @@ describe('teste no componente CurrenciesList na page Prices', () => {
       getAllByText,
       getAllByTestId,
       container,
-    } = renderWithRedux(renderWithRouter(<Prices />));
+    } = renderWithRedux(renderWithRouter(<App />));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
     const input = getByRole('textbox');
     expect(input).toBeInTheDocument();
@@ -60,11 +60,12 @@ describe('teste no componente CurrenciesList na page Prices', () => {
     fireEvent.change(input, { target: { value: 'BTC_ETH' } });
     const selectedCurrency = container.querySelector('p');
     fireEvent.click(selectedCurrency);
-    // apos a seleção da moeda, o botao deve estar ativo e fazer um chamada à API
+    // apos a seleção da moeda, o botao deve estar ativo e mudar a rota para /orders/BTC_ETH
     fireEvent.click(searchButton);
+    // a mudança de rota deve gerar uma nova requisição à API
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(2));
     // checando a existencia e o tamanho das tabelas
-    expect(getAllByRole('table')).toHaveLength(4);
+    await waitFor(() => expect(getAllByRole('table')).toHaveLength(4));
     expect(getAllByText('QTD')).toHaveLength(2);
     ['VENDA', 'COMPRA'].forEach((title) =>
       expect(getByText(title)).toBeInTheDocument()

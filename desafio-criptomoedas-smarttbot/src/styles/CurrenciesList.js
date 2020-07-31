@@ -33,7 +33,7 @@ const pulse = keyframes`
 export const ButtonStyle = styled.button`
   align-items: center;
   animation-name: ${pulse};
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-iteration-count: ${({ animation }) => animation};
   animation-timing-function: linear;
   background: #00b49d;

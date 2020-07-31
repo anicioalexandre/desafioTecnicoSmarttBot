@@ -1,20 +1,23 @@
 import React from 'react';
-import { Container } from '../styles/OrdersTable';
+import { Container, TD } from '../styles/OrdersTable';
+import { setActionColor } from '../services/setColors';
 
 const OrdersTable = ({ orders, names, reverse }) => {
   return (
     <Container direction={reverse ? 'row-reverse' : 'row'}>
       {names.map((name, index) => (
-        <table key={names[index]}>
+        <table key={name}>
           <thead>
             <tr key={names[index]}>
               <th>{names[index]}</th>
             </tr>
           </thead>
           <tbody>
-            {orders?.map((order) => (
-              <tr data-testid="values" key={order[index]}>
-                <td>{index === 1 ? order[index].toFixed(1) : order[index]}</td>
+            {orders?.map((order, index2) => (
+              <tr data-testid="values" key={order[index] + index2}>
+                <TD color={setActionColor(names[index])}>
+                  {index === 1 ? order[index].toFixed(1) : order[index]}
+                </TD>
               </tr>
             ))}
           </tbody>
