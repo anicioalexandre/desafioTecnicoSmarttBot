@@ -7,12 +7,12 @@ import {
 } from '../styles/CurrenciesList';
 import { connect } from 'react-redux';
 import { getCurrenciesNames } from '../redux/actions/currenciesInfos';
+import { getOrders } from '../redux/actions/orderBook';
+import { useHistory } from 'react-router-dom';
 import filterCurrenciesNames from '../services/filterCurrencies';
 import Input from './smallComponents/Input';
 import Button from './smallComponents/Button';
 import SearchIcon from '../svg/SearchIcon';
-import { getOrders } from '../redux/actions/orderBook';
-import { useHistory } from 'react-router-dom';
 
 const CurrenciesList = ({
   getCurrenciesNames,
@@ -51,9 +51,7 @@ const CurrenciesList = ({
         {filterCurrenciesNames(currenciesNames, inputValue).map(
           (currencyName) => (
             <CurrencyName
-              background={
-                currencyName === selectedCurrency ? '#00B49D' : '#c4c4c4'
-              }
+              background={currencyName === selectedCurrency ? '#00B49D' : '#c4c4c4'}
               color={currencyName === selectedCurrency ? '#fff' : '#000'}
               onClick={() => setCurrency(currencyName)}
               key={currencyName}

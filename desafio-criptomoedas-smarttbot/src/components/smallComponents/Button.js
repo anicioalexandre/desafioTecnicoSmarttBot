@@ -1,9 +1,9 @@
 import React from 'react';
 import { ButtonStyle } from '../../styles/CurrenciesList';
 
-const Button = ({ onClick, disabled, children, animation, to }) => {
+const Button = ({ onClick, disabled, children }) => {
   return (
-    <ButtonStyle to={to} animation={animation} disabled={disabled} onClick={onClick}>
+    <ButtonStyle disabled={disabled} onClick={onClick}>
       {children}
     </ButtonStyle>
   );

@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  min-width: 65%;
+  min-width: 70%;
 `;
 
 export const Message = styled.h3`
