@@ -3,8 +3,8 @@ import fetchEndpoint from '../../services/fetchEndPoint';
 export const REQUEST_CURRENCIES_API = 'REQUEST_CURRENCIES_API';
 export const REQUEST_CURRENCIES_SUCCESS = 'REQUEST_CURRENCIES_SUCCESS';
 export const REQUEST_CURRENCIES_FAILURE = 'REQUEST_CURRENCIES_FAILURE';
-export const REQUEST_CURRENCY_INFO_API = 'REQUEST_CURRENCY_INFO_API';
-export const REQUEST_CURRENCY_INFO_SUCCESS = 'REQUEST_CURRENCY_INFO_SUCCESS';
+export const REQUEST_CURRENCIES_INFO_API = 'REQUEST_CURRENCIES_INFO_API';
+export const REQUEST_CURRENCIES_INFO_SUCCESS = 'REQUEST_CURRENCIES_INFO_SUCCESS';
 
 export const requestCurrenciesApi = () => ({
   type: REQUEST_CURRENCIES_API,
@@ -33,25 +33,24 @@ export const getCurrenciesNames = (endpoint) => {
   };
 };
 
-export const requestCurrencyInfoApi = () => ({
-  type: REQUEST_CURRENCY_INFO_API,
+export const requestCurrenciesInfoApi = () => ({
+  type: REQUEST_CURRENCIES_INFO_API,
 });
 
-const requestCurrencyInfoSuccess = (currencyInfo) => ({
-  type: REQUEST_CURRENCY_INFO_SUCCESS,
-  currencyInfo,
+const requestCurrenciesInfoSuccess = (currenciesInfo) => ({
+  type: REQUEST_CURRENCIES_INFO_SUCCESS,
+  currenciesInfo,
 });
 
 // essa action é muito parecida com a getCurrenciesNames, estão separadas para facilitar o entendimento.
-// ela recebe um parâmetro adicional e, com ele, a action dispacha as informações mais detalhadas 
-// da moeda selecionada:
-export const getCurrencyInfo = (endpoint, someCurrency) => {
+// e para ambas terem action requests distintas:
+export const getCurrenciesInfo = (endpoint) => {
   return (dispatch) => {
-    dispatch(requestCurrencyInfoApi());
+    dispatch(requestCurrenciesInfoApi());
     return fetchEndpoint(endpoint).then(
       (currenciesNamesandValues) =>
         dispatch(
-          requestCurrencyInfoSuccess(currenciesNamesandValues[someCurrency])
+          requestCurrenciesInfoSuccess(currenciesNamesandValues)
         ),
       (error) => dispatch(requestCurrenciesFailure(error))
     );
