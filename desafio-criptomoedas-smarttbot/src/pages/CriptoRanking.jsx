@@ -1,14 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Container, TableContainer } from '../styles/CriptoRanking';
 import { connect } from 'react-redux';
 import rankingFilterPagination from '../services/rankingFilterPagination';
 import { getCurrenciesInfo } from '../redux/actions/currenciesInfos';
+import { Container, TableContainer, TH } from '../styles/CriptoRanking';
+import { Message } from '../styles/CryptoCurrencies';
 import { TD } from '../styles/OrdersTable';
 import { setInfoColor } from '../services/setColors';
 import Tooltip from '../svg/Tooltip';
 import ReactTooltip from 'react-tooltip';
 import RankingPagination from '../components/RankingPagination';
-import { Message } from '../styles/CryptoCurrencies';
 
 const CriptoRanking = ({
   currenciesInfo,
@@ -23,6 +24,8 @@ const CriptoRanking = ({
 
   const [startPage, setStartPage] = useState(0);
   const [endPage, setEndPage] = useState(10);
+  const [filter, setFilter] = useState('');
+  const [order, setOrder] = useState(false);
 
   return (
     <Container>
@@ -30,26 +33,56 @@ const CriptoRanking = ({
       {loadingInfo && <Message>Carregando...</Message>}
       {currenciesInfo.length !== 0 && (
         <>
+          <h2>Ranking das Criptomoedas</h2>
+          <span>(clique nos títulos da tabela para ordernar os números em ordem crescente ou decrescente)</span>
           <TableContainer>
             <table>
               <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>Variação (%)</th>
-                  <th>Volume base</th>
-                  <th>
+                  <TH>Nome</TH>
+                  <TH
+                    background={filter === 'percentChange' ? '#00b49d' : '#212121'}
+                    onClick={() => {
+                      setFilter('percentChange');
+                      setOrder(!order);
+                    }}
+                  >
+                    Variação (%)
+                  </TH>
+                  <TH
+                    background={filter === 'baseVolume' ? '#00b49d' : '#212121'}
+                    onClick={() => {
+                      setFilter('baseVolume');
+                      setOrder(!order);
+                    }}
+                  >
+                    Volume base
+                  </TH>
+                  <TH
+                    background={filter === 'quoteVolume' ? '#00b49d' : '#212121'}
+                    onClick={() => {
+                      setFilter('quoteVolume');
+                      setOrder(!order);
+                    }}
+                  >
                     Volume ajustado{' '}
                     <Tooltip info="Calculado através do volume base dividido pelo preço médio nas últimas 24h." />
-                  </th>
+                  </TH>
                 </tr>
               </thead>
               <tbody>
+                {/* 
+                função de filtro que recebe os nomes e informações das moedas, dados de paginação e de filtro,
+                retornando um array paginado (10 elementos de cada vez), filtrado e ordenado (caso o filtro exista):
+                */}
                 {rankingFilterPagination(
                   currenciesInfo,
                   startPage,
-                  endPage
-                ).map(({ percentChange, baseVolume, quoteVolume, name }) => (
-                  <tr>
+                  endPage,
+                  filter,
+                  order
+                ).map(({ name, percentChange, baseVolume, quoteVolume }) => (
+                  <tr key={name}>
                     <TD>{name}</TD>
                     <TD color={setInfoColor(percentChange)}>
                       {(percentChange * 100).toFixed(2)}

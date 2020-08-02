@@ -7,6 +7,9 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   min-width: 70%;
+  h2 {
+    margin: 0;
+  }
 `;
 
 export const TableContainer = styled.div`
@@ -29,22 +32,16 @@ export const TableContainer = styled.div`
     text-align: left;
     width: 728px;
   }
-  th {
-    background: #212121;
-    color: white;
-    padding-bottom: 12px;
-    padding-top: 12px;
-    min-width: 180px;
-  }
   tr {
     text-align: center;
   }
 `;
 
-export const TD = styled.td`
-  background: #c4c4c4;
-  border-bottom: 1px solid #212121;
-  border-top: 1px solid #212121;
-  color: ${({ color }) => color};
-  font-weight: 500;
+export const TH = styled.th`
+  background: ${({ background = '#212121' }) => background};
+  color: white;
+  cursor: pointer;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  min-width: 180px;
 `;

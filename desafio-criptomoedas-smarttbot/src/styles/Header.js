@@ -7,7 +7,7 @@ export const HeaderStyle = styled.header`
   display: flex;
   flex-wrap: wrap;
   font-size: 32px;
-  height: 15vh;
+  min-height: 15vh;
   justify-content: space-around;
   width: 100%;
   h3 {
