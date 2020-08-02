@@ -1,7 +1,12 @@
 # desafioTecnicoSmarttBot
 
--notas: tratamento de erros da api é meio confuso (casos em que a moeda não existe a API não retorna um caso de erro),
+colocar um component not found
+
+-notas: 
+-tratamento de erros da api é meio confuso (casos em que a moeda não existe a API não retorna um caso de erro),
 e isso complica na hora de cobrir os componentes contra erros de requisição...
+-falta de paginação das chamadas da api (pelo menos não encontrei uma forma de fazer requisições com limite de dados)
+não permitiiu fazer uma paginação mais inteligente, dividindo por requisições com dados menores
 
 ### `npm start`
 

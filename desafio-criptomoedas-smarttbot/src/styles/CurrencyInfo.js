@@ -8,6 +8,7 @@ export const Container = styled.div`
   color: #000;
   display: grid;
   grid-template-rows: 50px;
+  margin-bottom: 2vh;
   min-height: 250px;
   min-width: 350px;
   place-items: center;

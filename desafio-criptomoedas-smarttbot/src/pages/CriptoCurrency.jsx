@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { getOrders } from '../redux/actions/orderBook';
 import { useParams } from 'react-router-dom';
 
-const CriptoCurrencies = ({ loading, error, orders, getOrders }) => {
+const CriptoCurrency = ({ loading, error, orders, getOrders }) => {
   const { currency } = useParams();
   useEffect(() => {
     getOrders(
@@ -14,7 +14,7 @@ const CriptoCurrencies = ({ loading, error, orders, getOrders }) => {
   }, [getOrders, currency]);
   return (
     <Container>
-      {error && <Message>Erro</Message>}
+      {error && <Message>Falha na requisição, tente novamente!</Message>}
       {loading && <Message>Carregando...</Message>}
       {orders.length !== 0 && <CurrencyOrders />}
     </Container>
@@ -31,4 +31,4 @@ const mapDispatch = {
   getOrders,
 };
 
-export default connect(mapState, mapDispatch)(CriptoCurrencies);
+export default connect(mapState, mapDispatch)(CriptoCurrency);

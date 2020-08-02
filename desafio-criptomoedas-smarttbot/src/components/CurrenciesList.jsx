@@ -38,6 +38,7 @@ const CurrenciesList = ({
           onChange={(e) => setInputValue(e.target.value)}
         />
         <Button
+          background={!selectedCurrency ? 'gray' : '#00b49d'}
           disabled={!selectedCurrency}
           onClick={() => history.push(`/orders/${selectedCurrency}`)}
         >

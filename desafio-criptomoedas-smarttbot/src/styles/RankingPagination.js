@@ -4,16 +4,13 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  min-width: 70%;
+  justify-content: center;
+  margin-bottom: 2vh;
+  width: 200px;
 `;
 
-export const Message = styled.h3`
-  align-items: center;
+export const PageDisplay = styled.div`
   display: flex;
   justify-content: center;
-  height: 40vh;
-  min-width: 60%;
-  max-width: 80%;
+  min-width: 45px;
 `;

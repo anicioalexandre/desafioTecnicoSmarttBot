@@ -6,7 +6,6 @@ export const Container = styled.div`
   flex: 1 1 200px;
   flex-direction: column;
   justify-content: center;
-  margin: 2vh 2vw;
   min-width: 300px;
   max-width: 15%;
 `;
@@ -21,13 +20,14 @@ export const InputButtonContainer = styled.div`
 
 export const ButtonStyle = styled.button`
   align-items: center;
-  background: #00b49d;
+  background: ${({ background = '#00b49d' }) => background};
   border-radius: 3px;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #000;
   cursor: pointer;
   display: flex;
+  font-weight: 600;
   height: 40px;
   justify-content: center;
   margin: 0 5px;
@@ -68,7 +68,7 @@ export const CurrenciesListStyle = styled.div`
     inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #000;
   font-weight: 350;
-  height: 70vh;
+  height: 60vh;
   margin: 5px 0;
   overflow-x: hidden;
   overflow-y: auto;
