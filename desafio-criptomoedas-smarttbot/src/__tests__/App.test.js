@@ -19,10 +19,10 @@ fetchEndpoint
   .mockImplementationOnce(() => Promise.resolve(mockOrders))
   .mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesandValues));
 
-describe('teste no componente CurrenciesList no App', () => {
+describe('testes do componente CurrenciesList no App', () => {
   it('tela inicial e chamada à api e se a quantidade de moedas renderizadas aparecem corretamente na tela', async () => {
     const { container, getByText } = renderWithRedux(renderWithRouter(<App />));
-    expect(getByText('Escolha uma moeda!'));
+    expect(getByText('Escolha um par de moedas!'));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
     await waitFor(() =>
       expect(container.querySelectorAll('p')).toHaveLength(
@@ -46,7 +46,6 @@ describe('teste no componente CurrenciesList no App', () => {
     const { getByRole, container } = renderWithRedux(renderWithRouter(<App />));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
     const input = getByRole('textbox');
-    expect(input).toBeInTheDocument();
     const searchButton = getByRole('button');
     // checando se o botao está desativado antes da seleção de uma moeda
     expect(searchButton).toBeDisabled();

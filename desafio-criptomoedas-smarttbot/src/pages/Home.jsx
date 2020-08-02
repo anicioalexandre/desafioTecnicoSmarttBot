@@ -3,7 +3,7 @@ import { Container, Message } from '../styles/CryptoCurrencies';
 
 const Home = () => (
   <Container>
-    <Message>Escolha uma moeda!</Message>
+    <Message>Escolha um par de moedas!</Message>
   </Container>
 );
 

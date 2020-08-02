@@ -1,6 +1,6 @@
 import createCurrenciesInfoArray from './createCurrenciesInfoArray';
 
-// função pra ordernar números em ordem ASC ou DESC:
+// função pra ordernar números em ordem ASC (order = false) ou DESC (order = true):
 const compareNumbers = (columnType, order) => (a, b) => {
   let comparison = 0;
   if (Number(a[columnType]) > Number(b[columnType])) {

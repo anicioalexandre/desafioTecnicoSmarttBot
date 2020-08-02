@@ -72,8 +72,8 @@ const CriptoRanking = ({
               </thead>
               <tbody>
                 {/* 
-                função de filtro que recebe os nomes e informações das moedas, dados de paginação e de filtro,
-                retornando um array paginado (10 elementos de cada vez), filtrado e ordenado (caso o filtro exista):
+                função que recebe os nomes e informações das moedas, dados de paginação e de filtro,retornando
+                um array paginado (10 elementos de cada vez), filtrado e ordenado (caso o filtro exista):
                 */}
                 {rankingFilterPagination(
                   currenciesInfo,
@@ -83,7 +83,7 @@ const CriptoRanking = ({
                   order
                 ).map(({ name, percentChange, baseVolume, quoteVolume }) => (
                   <tr key={name}>
-                    <TD>{name}</TD>
+                    <TD data-testid="currency-name">{name}</TD>
                     <TD color={setInfoColor(percentChange)}>
                       {(percentChange * 100).toFixed(2)}
                     </TD>

@@ -22,7 +22,7 @@ fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesan
 fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockOrders));
 fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesandValues));
 
-describe('teste na Page CriptoCurrency', () => {
+describe('testes da página CriptoCurrency', () => {
   it('tamanho das tabelas aparecem corretamente na tela', async () => {
     const {
       getAllByRole,
