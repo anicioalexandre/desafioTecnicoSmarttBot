@@ -40,7 +40,7 @@ const CurrencyInfo = ({ currenciesInfo, loadingInfo, getCurrenciesInfo }) => {
       </div>
       <div>
         Volume ajustado{' '}
-        <Tooltip info="Calculado através do volume base vezes o preço médio nas últimas 24h." />
+        <Tooltip info="Calculado através do volume base dividido pelo preço médio nas últimas 24h." />
         :{' '}
         <NumberInfo data-testid="info">{currenciesInfo[currency]?.quoteVolume}</NumberInfo>
         <ReactTooltip effect="solid" />

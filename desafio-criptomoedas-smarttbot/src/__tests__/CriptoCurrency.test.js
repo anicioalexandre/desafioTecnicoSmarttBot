@@ -2,11 +2,10 @@ import React from 'react';
 import { waitFor } from '@testing-library/react';
 import renderWithRedux from '../helpers/renderWithRedux';
 import renderWithRouter from '../helpers/renderWithRouter';
-import CriptoCurrencies from '../pages/CriptoCurrencies';
+import CriptoCurrency from '../pages/CriptoCurrency';
 import fetchEndpoint from '../services/fetchEndPoint';
 import mockOrders from '../__mocks__/mockOrders';
 import mockCurrenciesNamesandValues from '../__mocks__/mockCurrenciesNamesandValues';
-import CurrencyInfo from '../components/CurrencyInfo';
 
 afterEach(() => {
   fetchEndpoint.mockClear();
@@ -23,14 +22,14 @@ fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesan
 fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockOrders));
 fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockCurrenciesNamesandValues));
 
-describe('teste na Page CriptoCurrencies', () => {
+describe('teste na Page CriptoCurrency', () => {
   it('tamanho das tabelas aparecem corretamente na tela', async () => {
     const {
       getAllByRole,
       getAllByText,
       getAllByTestId,
       getByText,
-    } = renderWithRedux(renderWithRouter(<CriptoCurrencies />));
+    } = renderWithRedux(renderWithRouter(<CriptoCurrency />));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(2));
     await waitFor(() => expect(getAllByRole('table')).toHaveLength(4));
     expect(getAllByText('QTD')).toHaveLength(2);
@@ -40,7 +39,7 @@ describe('teste na Page CriptoCurrencies', () => {
     expect(getAllByTestId('values')).toHaveLength(40);
   });
   it('informações da moeda selecionada aparecem corretamente na tela', async () => {
-    const { getByText, getAllByTestId } = renderWithRedux(renderWithRouter(<CriptoCurrencies />));
+    const { getByText, getAllByTestId } = renderWithRedux(renderWithRouter(<CriptoCurrency />));
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(2));
     await waitFor(() => {
       [

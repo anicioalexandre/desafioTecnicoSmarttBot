@@ -18,7 +18,7 @@ const currenciesInfos = (state = INITIAL_STATE, action) => {
     case REQUEST_CURRENCIES_API:
       return { ...state, loadingNames: true };
     case REQUEST_CURRENCIES_FAILURE:
-      return { ...state, loadingNames: false, error: action.error };
+      return { ...state, loadingNames: false, loadingInfo: false, error: action.error };
     case REQUEST_CURRENCIES_SUCCESS:
       return { ...state, loadingNames: false, namesList: action.currenciesNames };
     case REQUEST_CURRENCIES_INFO_API:

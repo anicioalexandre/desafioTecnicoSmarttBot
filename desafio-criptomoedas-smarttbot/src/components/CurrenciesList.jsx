@@ -38,6 +38,7 @@ const CurrenciesList = ({
           onChange={(e) => setInputValue(e.target.value)}
         />
         <Button
+          background={!selectedCurrency ? 'gray' : '#00b49d'}
           disabled={!selectedCurrency}
           onClick={() => history.push(`/orders/${selectedCurrency}`)}
         >
@@ -45,8 +46,8 @@ const CurrenciesList = ({
         </Button>
       </InputButtonContainer>
       <CurrenciesListStyle>
-        {error && <p>Falha na requisição, tente novamente!</p>}
-        {loadingNames && <p>Carregando...</p>}
+        {error && <h3>Falha na requisição, tente novamente!</h3>}
+        {loadingNames && <h3>Carregando...</h3>}
         {/* função de filtro que recebe os nomes das moedas e retorna um array filtrado, caso o filtro exista */}
         {filterCurrenciesNames(currenciesNames, inputValue).map(
           (currencyName) => (
