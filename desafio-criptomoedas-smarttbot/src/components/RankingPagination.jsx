@@ -18,7 +18,7 @@ const RankingPagination = ({ previous, next, currenciesInfo }) => {
       >
         Anterior
       </Button>
-      <PageDisplay>
+      <PageDisplay data-testid="page-display">
         {endPage / 10}/{Math.ceil(Object.keys(currenciesInfo).length / 10)}
       </PageDisplay>
       <Button
