@@ -13,6 +13,18 @@ export const ButtonsContainer = styled(Container)`
   margin-bottom: 1vh;
 `;
 
+export const InputContainer = styled(Container)`
+  flex-direction: row;
+  margin-bottom: 1vh;
+  label {
+    min-width: 70px;
+  }
+  input {
+    box-shadow: none;
+    min-width: 25px;
+  }
+`;
+
 export const ChartButton = styled(ButtonStyle)`
   color: ${({ color = '#00000' }) => color};
   height: unset;

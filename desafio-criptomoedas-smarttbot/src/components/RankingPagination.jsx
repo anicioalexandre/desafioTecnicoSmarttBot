@@ -22,9 +22,7 @@ const RankingPagination = ({ previous, next, currenciesInfo }) => {
         {endPage / 10}/{Math.ceil(Object.keys(currenciesInfo).length / 10)}
       </PageDisplay>
       <Button
-        background={
-          endPage >= Object.keys(currenciesInfo).length ? 'gray' : '#00b49d'
-        }
+        background={endPage >= Object.keys(currenciesInfo).length ? 'gray' : '#00b49d'}
         disabled={endPage >= Object.keys(currenciesInfo).length}
         onClick={() => {
           setStartPage(startPage + 10);

@@ -1,6 +1,10 @@
 import React from 'react';
-import { Message } from '../styles/CryptoCurrencies';
+import { Message, Container } from '../styles/CryptoCurrencies';
 
-const NotFound = () => <Message>Página não encontrada</Message>;
+const NotFound = () => (
+  <Container>
+    <Message>Página não encontrada</Message>
+  </Container>
+);
 
 export default NotFound;

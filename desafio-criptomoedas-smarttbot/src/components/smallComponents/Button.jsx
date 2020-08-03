@@ -3,7 +3,12 @@ import { ButtonStyle } from '../../styles/CurrenciesList';
 
 const Button = ({ background, children, disabled, onClick, minWidth }) => {
   return (
-    <ButtonStyle minWidth={minWidth} background={background} disabled={disabled} onClick={onClick}>
+    <ButtonStyle
+      background={background}
+      disabled={disabled}
+      minWidth={minWidth}
+      onClick={onClick}
+    >
       {children}
     </ButtonStyle>
   );
