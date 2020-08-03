@@ -58,29 +58,41 @@ describe('testes da página CriptoRanking', () => {
     // checando ordenação nas primeiras 10 moedas após ordenação por variação
     fireEvent.click(getByText(/variação/i));
     decreasingPercentChangeMock.forEach((mockValue, index) =>
-      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(mockValue)
+      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(
+        mockValue
+      )
     );
     fireEvent.click(getByText(/variação/i));
     increasingPercentChangeMock.forEach((mockValue, index) =>
-      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(mockValue)
+      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(
+        mockValue
+      )
     );
     // checando ordenação nas primeiras 10 moedas após ordenação por volume base
     fireEvent.click(getByText(/volume base/i));
     decreasingBaseVolumeMock.forEach((mockValue, index) =>
-      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(mockValue)
+      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(
+        mockValue
+      )
     );
     fireEvent.click(getByText(/volume base/i));
     increasingBaseVolumeMock.forEach((mockValue, index) =>
-      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(mockValue)
+      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(
+        mockValue
+      )
     );
     // checando ordenação nas primeiras 10 moedas após ordenação por volume ajustado
     fireEvent.click(getByText(/volume ajustado/i));
     decreasingQuoteVolumeMock.forEach((mockValue, index) =>
-      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(mockValue)
+      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(
+        mockValue
+      )
     );
     fireEvent.click(getByText(/volume ajustado/i));
     increasingQuoteVolumeMock.forEach((mockValue, index) =>
-      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(mockValue)
+      expect(getAllByTestId('currency-name')[index]).toHaveTextContent(
+        mockValue
+      )
     );
   });
 });

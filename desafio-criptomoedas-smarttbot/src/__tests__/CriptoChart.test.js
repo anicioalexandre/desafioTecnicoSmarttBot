@@ -6,6 +6,7 @@ import CriptoChart from '../pages/CriptoChart';
 import fetchEndpoint from '../services/fetchEndPoint';
 import mockChartDataCase1 from '../__mocks__/mockChartDataCase1';
 import mockChartDataCase2 from '../__mocks__/mockChartDataCase2';
+import mockChartDataCase3 from '../__mocks__/mockChartDataCase3';
 
 afterEach(() => {
   fetchEndpoint.mockClear();
@@ -21,6 +22,8 @@ fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockChartDataCase1));
 fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockChartDataCase1));
 fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockChartDataCase2));
 fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockChartDataCase2));
+fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockChartDataCase3));
+fetchEndpoint.mockImplementationOnce(() => Promise.resolve(mockChartDataCase3));
 
 describe('testes da página CriptoChart', () => {
   it('testando chamada, dados iniciais e botões de intervalos existentes', async () => {
@@ -57,7 +60,7 @@ describe('testes da página CriptoChart', () => {
     );
   });
   it('testando case 2: tempo:6 meses - intervalo:24 horas', async () => {
-    const { getByText, queryAllByText } = renderWithRedux(
+    const { getByText, queryAllByText, queryByText } = renderWithRedux(
       renderWithRouter(<CriptoChart />)
     );
     await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
@@ -83,5 +86,33 @@ describe('testes da página CriptoChart', () => {
     ['4 horas', '24 horas'].forEach((intervalButton) =>
       expect(getByText(intervalButton)).toBeInTheDocument()
     );
+    ['5min', '15min', '30min', '2 horas'].forEach((intervalButton) =>
+      expect(queryByText(intervalButton)).toBeNull()
+    );
+  });
+  it('testando case 3: tempo:1 dia - intervalo:4 horas', async () => {
+    const { getByText, queryByText, queryAllByText } = renderWithRedux(renderWithRouter(<CriptoChart />));
+    await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(1));
+    // simulando entrada no case 3:
+    fireEvent.click(getByText(/1 dia/));
+    await waitFor(() => expect(fetchEndpoint).toHaveBeenCalledTimes(2));
+    //checando eixo X:
+    ['21h', '1h', '5h', '9h', '13h', '17h', '21h'].forEach((hour) =>
+      expect(queryAllByText(hour).length).toBeGreaterThan(0)
+    );
+    // verificando existencia dos valores corretos no eixo Y apenas no tipo média ponderada:
+    ['0.008', '0.006'].forEach((range) =>
+      expect(queryByText(range)).toBeInTheDocument()
+    );
+    [
+      '5min',
+      '15min',
+      '30min',
+      '2 horas',
+      '4 horas',
+    ].forEach((intervalButton) =>
+      expect(getByText(intervalButton)).toBeInTheDocument()
+    );
+    expect(queryByText('24 horas')).toBeNull()
   });
 });
