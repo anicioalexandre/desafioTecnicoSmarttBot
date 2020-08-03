@@ -42,5 +42,6 @@ A falta de paginação das chamadas da API (pelo menos não encontrei uma forma 
 
 ### `Bibliotecas externas`
 As bibliotecas externas utilizadas no aplicativo foram:
+- StyledComponents: é uma biblioteca de CSS que permite criar componentes (JavaScript) que permitem receber código CSS, utilizando tagged template literals. Desse modo os elementos de estilo se tornam componentes (parecidos com componentes do React) e a estilização se torna muito mais dinâmica e acessível.
 - ReactTooltip: um componente customizável que permite adicionar avisos na página e facilita a navegação do usuário.
 - Rechart: um componente de gráfico altamente personalizável, confiável (tem boa estabilidade) e com ótima performance.
