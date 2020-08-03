@@ -15,25 +15,6 @@ export const availableIntervals = (selectedTime) => {
   }
 };
 
-export const availableTimes = (selectedInterval) => {
-  switch (selectedInterval) {
-    case 300: //5 min
-      return [86400];
-    case 900: //15 min
-      return [86400];
-    case 1800: //30 min
-      return [86400, 432000];
-    case 7200: //2 horas
-      return [86400, 432000, 2592000];
-    case 14400: //4 horas
-      return [86400, 432000, 2592000, 15552000, 31536000];
-    case 86400: //24 horas
-      return [432000, 2592000, 15552000, 31536000];
-    default:
-      break;
-  }
-};
-
 export const intervalsNames = (interval) => {
   switch (interval) {
     case 300:
