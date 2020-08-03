@@ -12,9 +12,10 @@ const CriptoCurrency = ({ loading, error, orders, getOrders, cleanOrders }) => {
       `https://poloniex.com/public?command=returnOrderBook&currencyPair=${currency}&depth=10`
     );
     return () => {
-      cleanOrders();
+      cleanOrders(); // limpando as ordens quando o componente é desmontado
     };
   }, [getOrders, cleanOrders, currency]);
+  
   return (
     <Container>
       {error && <Message>Falha na requisição, tente novamente!</Message>}

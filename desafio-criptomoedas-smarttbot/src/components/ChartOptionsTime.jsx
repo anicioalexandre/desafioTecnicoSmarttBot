@@ -1,22 +1,23 @@
 import React, { useContext } from 'react';
 import CriptoChartContext from '../context/CriptoChartContext';
 import { ChartButton, ButtonsContainer, H3 } from '../styles/ChartOptions';
-import { availableTimes, timesNames } from '../services/availableIntervals';
+import { timesNames } from '../services/availableIntervals';
 
 const ChartOptionsData = () => {
-  const { interval, startTime, setStartTime } = useContext(CriptoChartContext);
+  const { setInterval, startTime, setStartTime } = useContext(CriptoChartContext);
 
   return (
     <ButtonsContainer>
       <H3>Tempo: </H3>
-      {/* gerando botôes de tempo dinamicamente devido ao fato de nem todos os botoes poderem ter acesso a determinados intervalos 
-      (por questões de tamanho dos dados de requisição de API), os intervalos disponiveis para cada tempo é determiando pela função
-      availableTimes */}
-      {availableTimes(interval).map((someTime) => (
+      {[86400, 432000, 2592000, 15552000, 31536000].map((someTime) => (
         <ChartButton
-          color={startTime === someTime ? '#fff' : '#000'}
           background={startTime === someTime ? '#00b49d' : 'gray'}
-          onClick={() => setStartTime(someTime)}
+          color={startTime === someTime ? '#fff' : '#000'}
+          onClick={() => {
+            setStartTime(someTime);
+            setInterval(14400); // iniciando no intervalo default (4 horas)
+          }}
+          key={someTime}
         >
           {timesNames(someTime)}
         </ChartButton>

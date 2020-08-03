@@ -13,10 +13,10 @@ const CurrencyOrders = ({ orders, actualCurrency }) => {
       <OrdersContainer>
         <OrdersTable
           reverse={true}
-          names={['VENDA', 'QTD']}
-          orders={orders?.asks}
+          names={['COMPRA', 'QTD']}
+          orders={orders?.bids}
         />
-        <OrdersTable names={['COMPRA', 'QTD']} orders={orders?.bids} />
+        <OrdersTable names={['VENDA', 'QTD']} orders={orders?.asks} />
         <CurrencyInfo />
       </OrdersContainer>
     </Container>

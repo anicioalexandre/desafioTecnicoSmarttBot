@@ -38,8 +38,8 @@ const CriptoRanking = ({
           <h2>Ranking das Criptomoedas</h2>
           <span>
             Clique nos títulos da tabela para ordernar os números em ordem
-            crescente ou decrescente. Para ver mais informações sobre o par de
-            moedas, clique sobre seu nome!
+            crescente ou decrescente. Para ver mais informações sobre um par de
+            moedas específico, clique sobre seu nome!
           </span>
           <TableContainer>
             <table>
@@ -47,9 +47,7 @@ const CriptoRanking = ({
                 <tr>
                   <TH>Nome</TH>
                   <TH
-                    background={
-                      filter === 'percentChange' ? '#00b49d' : '#212121'
-                    }
+                    background={filter === 'percentChange' ? '#00b49d' : '#212121'}
                     onClick={() => {
                       setFilter('percentChange');
                       setOrder(!order);
@@ -67,9 +65,7 @@ const CriptoRanking = ({
                     Volume base
                   </TH>
                   <TH
-                    background={
-                      filter === 'quoteVolume' ? '#00b49d' : '#212121'
-                    }
+                    background={filter === 'quoteVolume' ? '#00b49d' : '#212121'}
                     onClick={() => {
                       setFilter('quoteVolume');
                       setOrder(!order);
@@ -81,10 +77,8 @@ const CriptoRanking = ({
                 </tr>
               </thead>
               <tbody>
-                {/* 
-                função que recebe os nomes e informações das moedas, dados de paginação e de filtro,retornando
-                um array paginado (10 elementos de cada vez), filtrado e ordenado (caso o filtro exista):
-                */}
+                {/* função que recebe os nomes e informações das moedas, dados de paginação e de filtro,retornando
+                um array paginado (10 elementos de cada vez), filtrado e ordenado (caso o filtro exista): */}
                 {rankingFilterPagination(
                   currenciesInfo,
                   startPage,

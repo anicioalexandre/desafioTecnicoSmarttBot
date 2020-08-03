@@ -12,14 +12,15 @@ const ChartOptionsInterval = () => {
   return (
     <ButtonsContainer>
       <H3>Intervalo: </H3>
-      {/* gerando botôes de intervalo dinamicamente devido ao fato de nem todos os botoes poderem ter acesso a determinados tempos 
-      (por questões de tamanho dos dados de requisição de API), os tempos disponiveis para cada intervalo é determiando pela função
-      availableIntervals */}
+      {/* gerando botôes de intervalo dinamicamente devido ao fato de nem todos os botoes poderem 
+      ter acesso a determinados tempos(por questões de tamanho dos dados de requisição de API), os
+      tempos disponiveis para cada intervalo é determiando pela funçãoavailableIntervals */}
       {availableIntervals(startTime).map((someInterval) => (
         <ChartButton
-          color={interval === someInterval ? '#fff' : '#000'}
           background={interval === someInterval ? '#00b49d' : 'gray'}
+          color={interval === someInterval ? '#fff' : '#000'}
           onClick={() => setInterval(someInterval)}
+          key={someInterval}
         >
           {intervalsNames(someInterval)}
         </ChartButton>

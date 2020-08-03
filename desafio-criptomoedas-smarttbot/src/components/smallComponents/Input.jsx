@@ -2,7 +2,7 @@ import React from 'react';
 import { InputStyle } from '../../styles/CurrenciesList';
 
 const Input = ({ onChange, placeholder }) => {
-  return <InputStyle placeholder={placeholder} onChange={onChange} />;
+  return <InputStyle onChange={onChange} placeholder={placeholder} />;
 };
 
 export default Input;
