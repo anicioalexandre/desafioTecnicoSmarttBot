@@ -11,7 +11,7 @@ Após o clone do repositório, deve-se acessar a pasta:
 ```bash
 cd desafioTecnicoSmarttBot/desafio-criptomoedas-smarttbot/
 ```
-Nesta pasta, deve-se instalar as dependências do projeto:
+Nesta pasta, deve-se instalar as dependências do projeto (é necessário ter o NodeJS instalado):
 ```bash
 npm install
 ```
