@@ -31,7 +31,7 @@ Para visualizar a cobertura total de testes na aplicação:
 npm run test-coverage
 ```
 ### `Gerenciamento de estado`
-O gerenciamento de estado foi feito, majoritariamente, através do [Redux](https://redux.js.org/) (utilizando o middleware Thunk) de modo que todas as requisições à API foram gerenciadas por ele. Em componentes que não pecisavam de compatilhamento de estado foi utilizado o estado local do componente (utilizando o Hook useState()). 
+O gerenciamento de estado foi feito, majoritariamente, através do [Redux](https://redux.js.org/) (utilizando o middleware Thunk) de modo que todas as requisições à API foram gerenciadas por ele. Em componentes que não precisavam de compatilhamento de estado foi utilizado o estado local do componente (utilizando o Hook useState()). 
 
 No caso da página que continha o gráfico (/src/pages/CriptoChart.jsx), utilizei o [ContextAPI](https://reactjs.org/docs/context.html) para transmitir o estado desse componente para seus filhos (botões de personalização do gráfico). Nesse caso, optei pelo Context por possuir uma sintaxe mais simples (utilizando o hook useContext()) e principalmente porque era um tipo de estado que não necessitava estar disponível para a aplicação inteira.
 
