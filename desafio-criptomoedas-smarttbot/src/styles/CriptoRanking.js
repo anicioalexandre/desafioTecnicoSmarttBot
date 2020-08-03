@@ -37,6 +37,14 @@ export const TableContainer = styled.div`
     text-align: left;
     width: 728px;
   }
+  tbody {
+    tr{
+      cursor: pointer;
+      &:hover {
+      opacity: 0.8;
+    }
+    }
+  }
   tr {
     text-align: center;
   }

@@ -36,7 +36,6 @@ export const TD = styled.td`
   border-bottom: 1px solid #212121;
   border-top: 1px solid #212121;
   color: ${({ color }) => color};
-  cursor: ${({ cursor }) => cursor};
   font-weight: 500;
   padding 6px;
 `;
