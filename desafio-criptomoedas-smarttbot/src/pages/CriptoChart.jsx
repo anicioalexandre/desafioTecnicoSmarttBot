@@ -18,6 +18,8 @@ import { Container } from '../styles/CriptoRanking';
 import { Message } from '../styles/CryptoCurrencies';
 import ReactTooltip from 'react-tooltip';
 import Tooltip from '../svg/Tooltip';
+import mockChartDataCase1 from '../__mocks__/mockChartDataCase1';
+import mockChartDataCase2 from '../__mocks__/mockChartDataCase2';
 
 const CriptoChart = ({ getCurrencyChart, chartData, loading, error }) => {
   const actualUnixDate = Math.floor(new Date().getTime() / 1000);
