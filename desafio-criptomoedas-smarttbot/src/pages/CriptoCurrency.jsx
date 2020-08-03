@@ -2,21 +2,24 @@ import React, { useEffect } from 'react';
 import { Container, Message } from '../styles/CryptoCurrencies';
 import CurrencyOrders from '../components/CurrencyOrders';
 import { connect } from 'react-redux';
-import { getOrders } from '../redux/actions/orderBook';
+import { getOrders, cleanOrders } from '../redux/actions/orderBook';
 import { useParams } from 'react-router-dom';
 
-const CriptoCurrency = ({ loading, error, orders, getOrders }) => {
+const CriptoCurrency = ({ loading, error, orders, getOrders, cleanOrders }) => {
   const { currency } = useParams();
   useEffect(() => {
     getOrders(
       `https://poloniex.com/public?command=returnOrderBook&currencyPair=${currency}&depth=10`
     );
-  }, [getOrders, currency]);
+    return () => {
+      cleanOrders();
+    };
+  }, [getOrders, cleanOrders, currency]);
   return (
     <Container>
       {error && <Message>Falha na requisição, tente novamente!</Message>}
       {loading && <Message>Carregando...</Message>}
-      {orders.length !== 0 && <CurrencyOrders />}
+      {orders.asks && <CurrencyOrders />}
     </Container>
   );
 };
@@ -29,6 +32,7 @@ const mapState = (state) => ({
 
 const mapDispatch = {
   getOrders,
+  cleanOrders,
 };
 
 export default connect(mapState, mapDispatch)(CriptoCurrency);
