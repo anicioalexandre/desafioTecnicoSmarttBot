@@ -47,7 +47,9 @@ const CriptoRanking = ({
                 <tr>
                   <TH>Nome</TH>
                   <TH
-                    background={filter === 'percentChange' ? '#00b49d' : '#212121'}
+                    background={
+                      filter === 'percentChange' ? '#00b49d' : '#212121'
+                    }
                     onClick={() => {
                       setFilter('percentChange');
                       setOrder(!order);
@@ -65,7 +67,9 @@ const CriptoRanking = ({
                     Volume base
                   </TH>
                   <TH
-                    background={filter === 'quoteVolume' ? '#00b49d' : '#212121'}
+                    background={
+                      filter === 'quoteVolume' ? '#00b49d' : '#212121'
+                    }
                     onClick={() => {
                       setFilter('quoteVolume');
                       setOrder(!order);
@@ -86,14 +90,11 @@ const CriptoRanking = ({
                   filter,
                   order
                 ).map(({ name, percentChange, baseVolume, quoteVolume }) => (
-                  <tr key={name}>
-                    <TD
-                      onClick={() => history.push(`/orders/${name}`)}
-                      cursor="pointer"
-                      data-testid="currency-name"
-                    >
-                      {name}
-                    </TD>
+                  <tr
+                    onClick={() => history.push(`/orders/${name}`)}
+                    key={name}
+                  >
+                    <TD data-testid="currency-name">{name}</TD>
                     <TD color={setInfoColor(percentChange)}>
                       {(percentChange * 100).toFixed(2)}
                     </TD>
