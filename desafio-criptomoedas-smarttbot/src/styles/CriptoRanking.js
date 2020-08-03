@@ -10,6 +10,11 @@ export const Container = styled.div`
   h2 {
     margin: 0;
   }
+  span {
+    font-size: 13px;
+    max-width: 650px;
+    text-align: center;
+  }
 `;
 
 export const TableContainer = styled.div`

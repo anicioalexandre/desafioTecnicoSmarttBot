@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 50px;
   margin-bottom: 2vh;
-  min-height: 250px;
+  min-height: 300px;
   min-width: 350px;
   place-items: center;
   h3 {

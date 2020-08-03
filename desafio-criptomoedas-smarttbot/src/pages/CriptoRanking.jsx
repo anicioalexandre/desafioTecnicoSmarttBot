@@ -10,6 +10,7 @@ import { setInfoColor } from '../services/setColors';
 import Tooltip from '../svg/Tooltip';
 import ReactTooltip from 'react-tooltip';
 import RankingPagination from '../components/RankingPagination';
+import { useHistory } from 'react-router-dom';
 
 const CriptoRanking = ({
   currenciesInfo,
@@ -17,6 +18,7 @@ const CriptoRanking = ({
   error,
   getCurrenciesInfo,
 }) => {
+  const history = useHistory();
   useEffect(() => {
     if (currenciesInfo.length === 0)
       getCurrenciesInfo('https://poloniex.com/public?command=returnTicker');
@@ -34,14 +36,20 @@ const CriptoRanking = ({
       {currenciesInfo.length !== 0 && (
         <>
           <h2>Ranking das Criptomoedas</h2>
-          <span>(clique nos títulos da tabela para ordernar os números em ordem crescente ou decrescente)</span>
+          <span>
+            Clique nos títulos da tabela para ordernar os números em ordem
+            crescente ou decrescente. Para ver mais informações sobre o par de
+            moedas, clique sobre seu nome!
+          </span>
           <TableContainer>
             <table>
               <thead>
                 <tr>
                   <TH>Nome</TH>
                   <TH
-                    background={filter === 'percentChange' ? '#00b49d' : '#212121'}
+                    background={
+                      filter === 'percentChange' ? '#00b49d' : '#212121'
+                    }
                     onClick={() => {
                       setFilter('percentChange');
                       setOrder(!order);
@@ -59,7 +67,9 @@ const CriptoRanking = ({
                     Volume base
                   </TH>
                   <TH
-                    background={filter === 'quoteVolume' ? '#00b49d' : '#212121'}
+                    background={
+                      filter === 'quoteVolume' ? '#00b49d' : '#212121'
+                    }
                     onClick={() => {
                       setFilter('quoteVolume');
                       setOrder(!order);
@@ -83,7 +93,13 @@ const CriptoRanking = ({
                   order
                 ).map(({ name, percentChange, baseVolume, quoteVolume }) => (
                   <tr key={name}>
-                    <TD data-testid="currency-name">{name}</TD>
+                    <TD
+                      onClick={() => history.push(`/orders/${name}`)}
+                      cursor="pointer"
+                      data-testid="currency-name"
+                    >
+                      {name}
+                    </TD>
                     <TD color={setInfoColor(percentChange)}>
                       {(percentChange * 100).toFixed(2)}
                     </TD>

@@ -32,7 +32,7 @@ export const ButtonStyle = styled.button`
   justify-content: center;
   margin: 0 5px;
   outline: none;
-  width: 30%;
+  min-width: ${({ minWidth = `${80}px` }) => minWidth};
   &:hover {
     opacity: 0.8;
   }
@@ -52,6 +52,7 @@ export const CurrencyName = styled.p`
   background: ${(props) => props.background};
   border-bottom: 0.1px solid #000;
   border-radius: 3px;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   color: ${(props) => props.color};
   display: flex;
