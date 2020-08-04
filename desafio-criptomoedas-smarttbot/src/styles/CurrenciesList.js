@@ -60,6 +60,10 @@ export const CurrencyName = styled.p`
   height: 45px;
   justify-content: center;
   margin: 0;
+  &:hover {
+    background: #00b49d;
+    color: #fff;
+  }
 `;
 
 export const CurrenciesListStyle = styled.div`
