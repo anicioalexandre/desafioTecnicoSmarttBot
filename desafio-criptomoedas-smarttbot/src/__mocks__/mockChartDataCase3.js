@@ -1,9 +1,9 @@
 // 20200803145840
 // https://poloniex.com/public?command=returnChartData&currencyPair=BTC_XMR&start=1593475200&end=1593561600&period=14400
 
-// case 1:
+// case 3:
 // moeda: BTC_XMR
-// tempo: 6 meses
+// tempo: 1 dia
 // intervalo: 4 horas
 
 module.exports = [
