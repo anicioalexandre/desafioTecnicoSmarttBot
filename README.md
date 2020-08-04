@@ -2,7 +2,7 @@
 [![Linkedin Badge](https://img.shields.io/badge/-alexandre-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/alexandre-anicio/)](https://www.linkedin.com/in/alexandre-anicio/)
 
 ### `Descrição`
-Esse aplicativo permite ao usuário visualizar diversas informações ( cotações, variação, volume, book de ofertas) de criptomoedas em tempo real em um ambiente amigável e intuitivo. Pode-se navegar para um ranking de criptomoedas que dispões de informações chave de cada par e permite ao usuário fazer comparações e ordenações das moedas de acordo com sua performance nas últimas 24 horas. 
+Esse aplicativo permite ao usuário visualizar diversas informações ( cotações, variação, volume, book de ofertas) de criptomoedas em tempo real em um ambiente amigável e intuitivo. Pode-se navegar para um ranking que dispões de informações chave de cada par e permite ao usuário fazer comparações e ordenações das moedas de acordo com sua performance nas últimas 24 horas. 
 
 Se o usuário desejar ver mais informações sobre determinada moeda é possível buscá-la pelo seu nome ou clicar na respectiva linha na tabela de ranking. O aplicativo também dispõe de um gráfico personalizável para cada ativo, que permite ao usuário visualizar informações sobre a performance do ativo em diferentes circunstâncias e intervalos de tempo.
 
