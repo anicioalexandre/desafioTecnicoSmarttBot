@@ -45,7 +45,7 @@ const CriptoRanking = ({
             <table>
               <thead>
                 <tr>
-                  <TH>Nome</TH>
+                  <th>Nome</th>
                   <TH
                     background={
                       filter === 'percentChange' ? '#00b49d' : '#212121'
@@ -77,6 +77,7 @@ const CriptoRanking = ({
                   >
                     Volume ajustado{' '}
                     <Tooltip info="Calculado através do volume base dividido pelo preço médio nas últimas 24h." />
+                    <ReactTooltip type="light" effect="solid" />
                   </TH>
                 </tr>
               </thead>
@@ -111,7 +112,6 @@ const CriptoRanking = ({
           />
         </>
       )}
-      <ReactTooltip type="light" effect="solid" />
     </Container>
   );
 };

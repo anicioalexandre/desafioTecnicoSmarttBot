@@ -45,6 +45,10 @@ export const TableContainer = styled.div`
     }
     }
   }
+  th {
+    background: #212121;
+    color: #fff;
+  }
   tr {
     text-align: center;
   }
@@ -57,4 +61,7 @@ export const TH = styled.th`
   padding-bottom: 12px;
   padding-top: 12px;
   min-width: 180px;
+  &:hover {
+    background: #00b49d;
+  }
 `;
